@@ -16,10 +16,10 @@ app.get('/', function(req,res){
 
 app.post('/register', function(req, res){
     if(
-        isEmpty(req.body.name)  ||
-        isEmpty(req.body.email) ||
-        isEmpty(req.body.company_name) ||
-        isEmpty(req.body.password)
+        !(req.body.name)  ||
+        !(req.body.email) ||
+        !(req.body.company_name) ||
+        !(req.body.password)
          ){
         return res.json({
             'status' : false,
