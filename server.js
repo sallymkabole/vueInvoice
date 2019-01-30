@@ -16,6 +16,7 @@ app.get('/', function(req,res){
     });
 
 
+<<<<<<< HEAD
     app.post('/register', function(req, res){
         // check to make sure none of the fields are empty
         if( !(req.body.name)  || !(req.body.email) || !(req.body.company_name) || !(req.body.password) ){
@@ -24,6 +25,20 @@ app.get('/', function(req,res){
                 'message' : 'All fields are required'
             });
         }
+=======
+app.post('/register', function(req, res){
+    if(
+        !(req.body.name)  ||
+        !(req.body.email) ||
+        !(req.body.company_name) ||
+        !(req.body.password)
+         ){
+        return res.json({
+            'status' : false,
+            'message' : 'All fields are required'
+        });
+    }
+>>>>>>> eccd72a4bd8bdc82953cd39cc746c38bb94c8b0d
     bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
         let db = new sqlite3.Database("./db/invoiceApp.db");
         let sql = `INSERT INTO users(name,email,company_name,password) VALUES('${
